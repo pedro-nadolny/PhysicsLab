@@ -1,3 +1,13 @@
 <resources>
     <string name="app_name">PhysicsLab</string>
+
+    /* Login Screen */
+    <string name="login_button_text">Login</string>
+    <string name="login_email_placeholder">Email</string>
+    <string name="login_password_placeholder">Password</string>
+
+    /* Register Screen */
+    <string name="register_button_text">New Account</string>
+    <string name="confirm_register_button_text">Confirm</string>
+
 </resources>

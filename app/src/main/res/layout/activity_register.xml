@@ -1,13 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="robert.peter.physicslab.LoginActivity"
-    android:paddingLeft="16dp"
-    android:paddingRight="16dp">
+    tools:context="robert.peter.physicslab.RegisterActivity"
+    android:paddingRight="16dp"
+    android:paddingLeft="16dp">
 
     <TextView
         android:id="@+id/account_login_text"
@@ -19,7 +18,7 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
 
-        android:text="Login"
+        android:text="New Account"
         android:textSize="40dp"
         android:textColor="@color/colorPrimary"
         />
@@ -33,19 +32,6 @@
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintVertical_bias="0.45">
 
-        <TextView
-            android:id="@+id/email_input_title"
-
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintLeft_toLeftOf="parent"
-            android:layout_marginLeft="8dp"
-
-            android:text="@string/login_email_placeholder"
-            />
-
         <EditText
             android:id="@+id/email_login_input"
 
@@ -54,41 +40,33 @@
 
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/email_input_title"
+            app:layout_constraintTop_toTopOf="parent"
 
-            android:hint="@string/login_email_placeholder"
+            android:hint="Email"
             android:inputType="textEmailAddress"/>
-
-        <TextView
-            android:id="@+id/password_input_title"
-
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-
-            app:layout_constraintTop_toBottomOf="@id/email_login_input"
-            android:layout_marginTop="32dp"
-
-            app:layout_constraintLeft_toLeftOf="parent"
-            android:layout_marginLeft="8dp"
-
-            android:text="@string/login_password_placeholder"
-            />
 
         <EditText
             android:id="@+id/password_login_input"
 
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-
-            app:layout_constraintTop_toBottomOf="@+id/password_input_title"
+            app:layout_constraintTop_toBottomOf="@+id/email_login_input"
+            android:layout_marginTop="8dp"
 
 
-            android:hint="@string/login_password_placeholder"
+            android:hint="Password"
             android:inputType="textPassword"/>
 
+        <EditText
+            android:id="@+id/confirm_password_login_input"
+
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@+id/password_login_input"
+            android:layout_marginTop="8dp"
+
+            android:hint="Confirm your password"
+            android:inputType="textPassword"/>
     </android.support.constraint.ConstraintLayout>
 
     <Button
@@ -96,29 +74,13 @@
 
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintBottom_toTopOf="@+id/register_button"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         android:layout_marginBottom="8dp"
 
-        android:text="@string/login_button_text"
+        android:text="@string/confirm_register_button_text"
         android:background="@color/colorPrimary"
         android:textColor="#FFF"/>
-
-    <Button
-        android:id="@+id/register_button"
-
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        android:layout_marginBottom="16dp"
-
-        android:text="@string/register_button_text"
-        android:background="@color/colorPrimary"
-        android:textColor="#FFF"
-
-        android:onClick="presentRegisterActivity"/>
 
 </android.support.constraint.ConstraintLayout>
