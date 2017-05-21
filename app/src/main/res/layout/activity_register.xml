@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     tools:context="robert.peter.physicslab.RegisterActivity"
     android:paddingRight="16dp"
-    android:paddingLeft="16dp">
+    android:paddingLeft="16dp" >
 
     <TextView
         android:id="@+id/account_login_text"
@@ -19,18 +19,17 @@
         app:layout_constraintRight_toRightOf="parent"
 
         android:text="@string/register_title_text"
-        android:textSize="40dp"
+        android:textSize="40sp"
         android:textColor="@color/colorPrimary"
         />
 
     <android.support.constraint.ConstraintLayout
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/account_login_text"
+        app:layout_constraintBottom_toTopOf="@id/register_button"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintVertical_bias="0.45">
+        app:layout_constraintRight_toRightOf="parent">
 
         <TextView
             android:id="@+id/email_input_title"
@@ -46,7 +45,7 @@
             />
 
         <EditText
-            android:id="@+id/email_login_input"
+            android:id="@+id/email_input"
 
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -64,7 +63,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
 
-            app:layout_constraintTop_toBottomOf="@id/email_login_input"
+            app:layout_constraintTop_toBottomOf="@id/email_input"
             app:layout_constraintLeft_toLeftOf="parent"
             android:layout_marginStart="8dp"
             android:layout_marginTop="16dp"
@@ -72,7 +71,7 @@
             android:text="@string/register_password_input_placeholder" />
 
         <EditText
-            android:id="@+id/password_login_input"
+            android:id="@+id/password_input"
 
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -83,12 +82,12 @@
             android:inputType="textPassword"/>
 
         <TextView
-            android:id="@+id/confirm_password_login_title"
+            android:id="@+id/confirm_password_title"
 
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
 
-            app:layout_constraintTop_toBottomOf="@id/password_login_input"
+            app:layout_constraintTop_toBottomOf="@id/password_input"
             app:layout_constraintLeft_toLeftOf="parent"
             android:layout_marginStart="8dp"
             android:layout_marginTop="16dp"
@@ -96,30 +95,30 @@
             android:text="@string/register_password_confirm_input_placeholder" />
 
         <EditText
-            android:id="@+id/confirm_password_login_input"
+            android:id="@+id/confirm_password_input"
 
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
 
-            app:layout_constraintTop_toBottomOf="@+id/confirm_password_login_title"
+            app:layout_constraintTop_toBottomOf="@+id/confirm_password_title"
 
             android:hint="@string/register_password_confirm_input_placeholder"
             android:inputType="textPassword"/>
     </android.support.constraint.ConstraintLayout>
 
     <Button
-        android:id="@+id/login_button"
+        android:id="@+id/register_button"
 
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        android:layout_marginBottom="8dp"
+        android:layout_marginBottom="16dp"
 
         android:text="@string/register_create_button_text"
         android:background="@color/colorPrimary"
         android:textColor="#FFF"
-        android:onClick="presentLoginActivity"/>
+        android:onClick="createUser"/>
 
 </android.support.constraint.ConstraintLayout>
