@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "960173131230",
+    "firebase_url": "https://physicslab-52600.firebaseio.com",
+    "project_id": "physicslab-52600",
+    "storage_bucket": "physicslab-52600.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:960173131230:android:13db2e225410823b",
+        "android_client_info": {
+          "package_name": "robert.peter.physicslab"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "960173131230-66rghn7api67sofm74oichocebn7n0es.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCWhgomfHNl0RwKirh5m5rjRJPaBocSucw"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
