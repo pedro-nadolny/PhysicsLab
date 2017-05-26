@@ -35,7 +35,6 @@ public class RegisterActivity extends AppCompatActivity {
     }
 
     public void createUser(View view) {
-
         String password = passwordEditText.getText().toString();
         String passwordConfirm = passwordConfirmEditText.getText().toString();
 
@@ -44,7 +43,6 @@ public class RegisterActivity extends AppCompatActivity {
                     Toast.LENGTH_SHORT).show();
             return;
         }
-
 
         String email = emailEditText.getText().toString();
 
@@ -60,14 +58,19 @@ public class RegisterActivity extends AppCompatActivity {
             return;
         }
 
+        findViewById(R.id.spinner).setVisibility(View.VISIBLE);
+
         mAuth.createUserWithEmailAndPassword(email, password)
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
+                        findViewById(R.id.spinner).setVisibility(View.GONE);
+
                         if (task.isSuccessful()) {
                             Intent intent = new Intent(getApplicationContext(), HomeActivity.class);
                             startActivity(intent);
                         } else {
+
                             Toast.makeText(getApplicationContext(), "Registration failed.",
                                     Toast.LENGTH_SHORT).show();
                         }

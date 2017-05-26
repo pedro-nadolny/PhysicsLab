@@ -29,7 +29,7 @@
         app:layout_constraintTop_toBottomOf="@id/account_login_text"
         app:layout_constraintBottom_toTopOf="@id/register_button"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent">
+        app:layout_constraintRight_toRightOf="parent" >
 
         <TextView
             android:id="@+id/email_input_title"
@@ -108,7 +108,6 @@
 
     <Button
         android:id="@+id/register_button"
-
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -120,5 +119,35 @@
         android:background="@color/colorPrimary"
         android:textColor="#FFF"
         android:onClick="createUser"/>
+
+    <android.support.constraint.ConstraintLayout
+        android:id="@+id/spinner"
+        android:visibility="gone"
+
+        android:padding="10dp"
+        android:background="#80000000"
+
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        >
+
+        <ProgressBar
+
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+
+            android:indeterminate="true"
+
+            />
+    </android.support.constraint.ConstraintLayout>
 
 </android.support.constraint.ConstraintLayout>

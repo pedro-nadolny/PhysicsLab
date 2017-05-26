@@ -3,6 +3,7 @@ package robert.peter.physicslab;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
+import android.net.ConnectivityManager;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
@@ -16,6 +17,7 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 
+//TODO: LOGIN/REGISTER SPINNER
 
 public class LoginActivity extends AppCompatActivity {
 
@@ -51,7 +53,7 @@ public class LoginActivity extends AppCompatActivity {
         super.onStart();
 
         if(mAuth.getCurrentUser() != null) {
-            presentRegisterActivity(null);
+            presentHomeActivity(null);
         }
     }
 
@@ -60,32 +62,49 @@ public class LoginActivity extends AppCompatActivity {
         startActivity(registerActivity);
     }
 
-    public void loginAction (View view) {
-        String email = emailEditText.getText().toString();
-        String password = passwordEditText.getText().toString();
+    public void presentHomeActivity (View view){
+        Intent homeActivity = new Intent(this, HomeActivity.class);
+        startActivity(homeActivity);
+    }
 
-        if (email.length() == 0 || password.length() == 0) {
-            Toast.makeText(getApplicationContext(), "Authentication problem.",
+    public void loginAction (View view) {
+        ConnectivityManager connectivityManager = (ConnectivityManager)getSystemService(Context.CONNECTIVITY_SERVICE);
+
+        if(connectivityManager.getActiveNetworkInfo() == null) {
+            Toast.makeText(getApplicationContext(), "No internet connection.",
                     Toast.LENGTH_SHORT).show();
             return;
         }
+
+        String email = emailEditText.getText().toString();
+        String password = passwordEditText.getText().toString();
+
+        final Toast t = Toast.makeText(getApplicationContext(), "Wrong email or password.", Toast.LENGTH_SHORT);
+
+        if (email.length() == 0 || password.length() < 0) {
+            t.show();
+            return;
+        }
+
+        findViewById(R.id.spinner).setVisibility(View.VISIBLE);
 
         mAuth.signInWithEmailAndPassword(email, password)
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
 
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
+                        findViewById(R.id.spinner).setVisibility(View.GONE);
+
                         if (task.isSuccessful()) {
                             if(mAuth.getCurrentUser() != null) {
+                                presentHomeActivity(null);
                                 return;
                             }
                         }
 
-                        Toast.makeText(getApplicationContext(), "Authentication problem.",
-                                Toast.LENGTH_SHORT).show();
+                        t.show();
                     }
                 });
-
     }
 
     private void hideKeyboard(EditText editText) {
