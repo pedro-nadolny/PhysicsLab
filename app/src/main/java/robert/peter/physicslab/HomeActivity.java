@@ -2,46 +2,76 @@ package robert.peter.physicslab;
 
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
-import android.widget.ArrayAdapter;
-import android.widget.ListView;
+import android.widget.ExpandableListView;
 
 import com.google.firebase.auth.FirebaseAuth;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
 
 public class HomeActivity extends AppCompatActivity {
 
-    String[] titles = new String[] {"Mecânica",
-                                    "Gravitação",
-                                    "Termodinâmica",
-                                    "Eletromagnetismo",
-                                    "Óptica",
-                                    "Fisica Moderna"};
-    FirebaseAuth mAuth;
+    private final String[] titlesStr = new String[] {"Mecânica",
+                                                    "Gravitação",
+                                                    "Termodinâmica",
+                                                    "Eletromagnetismo",
+                                                    "Óptica",
+                                                    "Fisica Moderna"};
+
+    private final String[] subtitlesStr = new String[]{"Aula 1", "Aula 2","Aula 3"};
+
+    private FirebaseAuth mAuth;
+
+    private static ExpandableListView expandableListView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
-
-        ListView listaDeCursos = (ListView) findViewById(R.id.list);
-
-        final ArrayList<String> list = new ArrayList<String>();
-
-        for (int i = 0; i < titles.length; ++i) {
-            String str = titles[i];
-            list.add(titles[i]);
-        }
-
-        final ArrayAdapter adapter = new ArrayAdapter(this,
-                android.R.layout.simple_list_item_1, list);
-
-        listaDeCursos.setAdapter(adapter);
+        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 
         mAuth = FirebaseAuth.getInstance();
+        configureExpandableListView();
+    }
+
+    private void configureExpandableListView() {
+        expandableListView = (ExpandableListView) findViewById(R.id.list);
+
+        List<String> titles = new ArrayList<>();
+        for (String s: titlesStr) {
+            titles.add(s);
+        }
+
+        List<String> subtitles = new ArrayList<>();
+        for(String s: subtitlesStr) {
+            subtitles.add(s);
+        }
+
+        HashMap<String, List<String>> subgroupsData = new HashMap<>();
+        for(String s: titles) {
+            subgroupsData.put(s,subtitles);
+        }
+
+        HomeExpandableListAdapter adapter = new HomeExpandableListAdapter(getApplicationContext(), titles, subgroupsData);
+        expandableListView.setAdapter(adapter);
+
+        expandableListView.setOnGroupExpandListener(new ExpandableListView.OnGroupExpandListener() {
+            @Override
+            public void onGroupExpand(int groupPosition) {
+                for (int i = 0; i < titlesStr.length; i++) {
+                    if (i != groupPosition) {
+                        expandableListView.collapseGroup(i);
+                    }
+                }
+            }
+        });
+
+        expandableListView.setGroupIndicator(null);
     }
 
     public void presentLoginActivity (){
@@ -73,3 +103,6 @@ public class HomeActivity extends AppCompatActivity {
         alert.show();
     }
 }
+
+
+

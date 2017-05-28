@@ -17,13 +17,12 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 
-//TODO: LOGIN/REGISTER SPINNER
-
 public class LoginActivity extends AppCompatActivity {
 
     private FirebaseAuth mAuth;
     private EditText emailEditText;
     private EditText passwordEditText;
+    Toast toast;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,6 +46,9 @@ public class LoginActivity extends AppCompatActivity {
 
         emailEditText.setOnFocusChangeListener(hideKeyboardTouchOutside);
         passwordEditText.setOnFocusChangeListener(hideKeyboardTouchOutside);
+
+        toast = Toast.makeText(this, "", Toast.LENGTH_SHORT);
+        toast.setGravity(toast.getGravity(), toast.getXOffset(), toast.getYOffset() + 150);
     }
 
     public void onStart() {
@@ -71,18 +73,15 @@ public class LoginActivity extends AppCompatActivity {
         ConnectivityManager connectivityManager = (ConnectivityManager)getSystemService(Context.CONNECTIVITY_SERVICE);
 
         if(connectivityManager.getActiveNetworkInfo() == null) {
-            Toast.makeText(getApplicationContext(), "No internet connection.",
-                    Toast.LENGTH_SHORT).show();
+            showToast("No internet connection.");
             return;
         }
 
         String email = emailEditText.getText().toString();
         String password = passwordEditText.getText().toString();
 
-        final Toast t = Toast.makeText(getApplicationContext(), "Wrong email or password.", Toast.LENGTH_SHORT);
-
         if (email.length() == 0 || password.length() < 0) {
-            t.show();
+            showToast("Insert your email and password.");
             return;
         }
 
@@ -102,7 +101,7 @@ public class LoginActivity extends AppCompatActivity {
                             }
                         }
 
-                        t.show();
+                        showToast("Login failed.");
                     }
                 });
     }
@@ -110,5 +109,10 @@ public class LoginActivity extends AppCompatActivity {
     private void hideKeyboard(EditText editText) {
         InputMethodManager imm = (InputMethodManager)getApplicationContext().getSystemService(Context.INPUT_METHOD_SERVICE);
         imm.hideSoftInputFromWindow(editText.getWindowToken(), 0);
+    }
+
+    private void showToast(String s) {
+        toast.setText(s);
+        toast.show();
     }
 }
