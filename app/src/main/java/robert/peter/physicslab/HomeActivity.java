@@ -6,6 +6,7 @@ import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
+import android.view.View;
 import android.widget.ExpandableListView;
 
 import com.google.firebase.auth.FirebaseAuth;
@@ -71,12 +72,24 @@ public class HomeActivity extends AppCompatActivity {
             }
         });
 
+        expandableListView.setOnChildClickListener(new ExpandableListView.OnChildClickListener() {
+
+            @Override
+            public boolean onChildClick(ExpandableListView parent, View v, int groupPosition, int childPosition, long id) {
+                presentMechanicsActivity();
+                return true;
+            }
+        });
+
         expandableListView.setGroupIndicator(null);
     }
 
+    public void presentMechanicsActivity (){
+        startActivity(new Intent(this, MechanicsActivity.class));
+    }
+
     public void presentLoginActivity (){
-        Intent loginActivity = new Intent(this, LoginActivity.class);
-        startActivity(loginActivity);
+        startActivity(new Intent(this, LoginActivity.class));
     }
 
     public void onBackPressed() {
