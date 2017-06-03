@@ -13,5 +13,12 @@
     <string name="register_email_input_placeholder">Email</string>
     <string name="register_password_input_placeholder">Password</string>
     <string name="register_password_confirm_input_placeholder">Confirm your password</string>
+    <string name="logout_alert_title">Logout</string>
+    <string name="logout_alert_message">Would you like to logut?</string>
+    <string name="logout_alert_button_positive">Yes</string>
+    <string name="logout_alert_button_negative">No</string>
+    <string name="alert_no_acc_button">Close</string>
+    <string name="alert_no_acc_message">You need to use an device with acelerometer enable to acess this class</string>
+    <string name="alert_no_acc_title">No acess do acelerometer</string>
 
 </resources>

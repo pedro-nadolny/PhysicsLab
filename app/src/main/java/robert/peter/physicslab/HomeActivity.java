@@ -17,14 +17,17 @@ import java.util.List;
 
 public class HomeActivity extends AppCompatActivity {
 
-    private final String[] titlesStr = new String[] {"Mecânica",
-                                                    "Gravitação",
-                                                    "Termodinâmica",
-                                                    "Eletromagnetismo",
-                                                    "Óptica",
-                                                    "Fisica Moderna"};
+    private final String[] titlesStr = new String[] {"Mechanics",
+                                                     "Gravitation",
+                                                     "Thermodynamics",
+                                                     "Electromagnetism",
+                                                     "Optics",
+                                                     "Modern Physics"};
 
-    private final String[] subtitlesStr = new String[]{"Aula 1", "Aula 2","Aula 3"};
+    private final String[] subtitlesStr = new String[]{ "Class 1",
+                                                        "Class 2",
+                                                        "Class 3",
+                                                        "Class 4"};
 
     private FirebaseAuth mAuth;
 
@@ -95,10 +98,10 @@ public class HomeActivity extends AppCompatActivity {
     public void onBackPressed() {
         AlertDialog alert = new AlertDialog.Builder(HomeActivity.this).create();
 
-        alert.setTitle("Logout");
-        alert.setMessage("Would you like to logut?");
+        alert.setTitle(getString(R.string.logout_alert_title));
+        alert.setMessage(getString(R.string.logout_alert_message));
 
-        alert.setButton(AlertDialog.BUTTON_POSITIVE, "Yes", new DialogInterface.OnClickListener() {
+        alert.setButton(AlertDialog.BUTTON_POSITIVE, getString(R.string.logout_alert_button_positive), new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int which) {
                         mAuth.signOut();
                         dialog.dismiss();
@@ -107,7 +110,7 @@ public class HomeActivity extends AppCompatActivity {
                 }
         );
 
-        alert.setButton(AlertDialog.BUTTON_NEGATIVE, "No", new DialogInterface.OnClickListener() {
+        alert.setButton(AlertDialog.BUTTON_NEGATIVE, getString(R.string.logout_alert_button_negative), new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int which) {
                 dialog.dismiss();
             }

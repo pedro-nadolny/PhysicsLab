@@ -54,22 +54,6 @@ public class HomeExpandableListAdapter implements ExpandableListAdapter {
     }
 
     @Override
-    public long getGroupId(int groupPosition) {
-        return groupPosition;
-    }
-
-    @Override
-    public long getChildId(int groupPosition, int childPosition) {
-        return childPosition;
-    }
-
-    @Override
-    public boolean hasStableIds() {
-        // TODO Auto-generated method stub
-        return false;
-    }
-
-    @Override
     public View getGroupView(int groupPosition, boolean isExpanded, View convertView, ViewGroup parent) {
 
         if (convertView == null) {
@@ -112,19 +96,28 @@ public class HomeExpandableListAdapter implements ExpandableListAdapter {
     }
 
     @Override
+    public long getGroupId(int groupPosition) {
+        return groupPosition;
+    }
+
+    @Override
+    public long getChildId(int groupPosition, int childPosition) {
+        return childPosition;
+    }
+
+    @Override
+    public boolean hasStableIds() { return false; }
+
+    @Override
     public boolean isChildSelectable(int groupPosition, int childPosition) {
         return true;
     }
 
     @Override
-    public void unregisterDataSetObserver(DataSetObserver observer) {
-
-    }
+    public void unregisterDataSetObserver(DataSetObserver observer) {}
 
     @Override
-    public void registerDataSetObserver(DataSetObserver observer) {
-
-    }
+    public void registerDataSetObserver(DataSetObserver observer) {}
 
     @Override
     public boolean isEmpty() {
